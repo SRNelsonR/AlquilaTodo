@@ -32,7 +32,6 @@ app.use(
     }
 );
 
-
 // -----------------------Gestion de Usuarios---------------------------
 // Creacion de Usuario
 app.post("/crear-usuario", function(req, res){
@@ -65,21 +64,26 @@ app.post("/crear-usuario", function(req, res){
 });
 
 // Actualizar Usuario
-app.post("/actualizar-usuario", function(req, res){
+app.post("/actualizar-informacion-usuario", function(req, res){
     var conexion = mysql.createConnection(credenciales);
     conexion.query(
-        "UPDATE tbl_usuarios SET codigo_plan = ?, nombre = ?, apellido = ?, correo = ?, nickname = ?, contrasena = sha1(?) WHERE id_usuario = ?",
+        "UPDATE tbl_usuarios SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, fecha_modificacion = ? WHERE codigo_usuario = ?",
         [
-            req.body.codigo_plan,
             req.body.nombre,
             req.body.apellido,
-            req.body.correo,
-            req.body.nickname,
-            req.body.contrasena,
+            req.body.telefono,
+            req.body.direccion,
+            req.body.fecha_modificacion,
             req.body.codigo_usuario
         ],
         function(error, data, fields){
-            res.send(data);
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
+                res.send(data);
+                res.end();
+            }
         }
     );
     conexion.end();
@@ -89,7 +93,7 @@ app.post("/actualizar-usuario", function(req, res){
 app.post("/actualizar-variables-session", function(req, res){
     var conexion = mysql.createConnection(credenciales);
     conexion.query(
-        "select id_usuario, codigo_genero, codigo_plan, nombre, apellido, correo, nickname, contrasena, fecha_creacion from tbl_usuarios where correo = ? and contrasena = sha1(?)",
+        "SELECT codigo_usuario, nombre, apellido, correo, telefono, direccion, estado_usuario, fecha_nacimiento FROM tbl_usuarios WHERE correo = ? and contrasena = sha1(?) and estado_usuario = 'Activo'",
         [
             req.body.correo,
             req.body.contrasena
@@ -100,12 +104,14 @@ app.post("/actualizar-variables-session", function(req, res){
                 res.end();
             }else{
                 if (data.length==1){
-                    req.session.codigoUsuario = data[0].id_usuario;
-                    req.session.correoUsuario = data[0].correo;
-                    req.session.codigoPlan = data[0].codigo_plan;
+                    req.session.codigo_usuario = data[0].codigo_usuario;
                     req.session.nombre = data[0].nombre;
                     req.session.apellido = data[0].apellido;
-                    req.session.nickname = data[0].nickname;
+                    req.session.correo = data[0].correo;
+                    req.session.telefono = data[0].telefono;
+                    req.session.direccion = data[0].direccion;
+                    req.session.estado_usuario = data[0].estado_usuario;
+                    req.session.fecha_nacimiento = data[0].fecha_nacimiento;
                 }
                 res.send(data);
                 res.end();
