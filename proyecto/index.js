@@ -122,8 +122,10 @@ app.post("/actualizar-variables-session", function(req, res){
 });
 
 // Variables de sesion (Estaba como POST lo cambia a GET)
-app.get("/login", function(req, res){
+app.post("/login", function(req, res){
     var conexion = mysql.createConnection(credenciales);
+    console.log("Params: ", req.params);
+    console.log("Body: ", req.body);
     conexion.query(
         "SELECT codigo_usuario, nombre, apellido, correo, telefono, direccion, estado_usuario, fecha_nacimiento FROM tbl_usuarios WHERE correo = ? and contrasena = sha1(?) and estado_usuario = 'Activo'",
         [
