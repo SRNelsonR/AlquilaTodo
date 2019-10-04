@@ -1,10 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8">
         <title>Alquitodo</title>
+        <link rel="icon" href="img/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/css-boot/bootstrap.min.css">
+        <link rel="stylesheet" href="css/css-boot/custom.css">
     </head>
-    <body>
-        <h1>Este es el lugar indicado para registrarse</h1>
+    <body class="bg-dark">
+        
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+                <div id="registrarse" class="col-lg-6 col-offset-3">
+                   <table class="table">
+                       <tr>
+                           <td colspan="2" class="text-center">Crear Cuenta</td>
+                       </tr>
+                       <tr>
+                           <td>Nombre:</td>
+                           <td><input id="txt-nombre" class="form-control" type="text" placeholder="Ingrese su nombre"> </td>
+                       </tr>
+                       <tr>
+                           <td>Apellido:</td>
+                           <td><input id="txt-apellido" class="form-control" type="text" placeholder="Ingrese su apellido"></td>
+                       </tr>
+                       <tr>
+                           <td>Correo:</td>
+                           <td><input id="txt-correo" class="form-control" type="text" placeholder="Ingrese su correo"></td>
+                       </tr>
+                       <tr>
+                           <td>Contraseña:</td>
+                           <td><input id="txt-password" class="form-control" type="password" placeholder="Ingrese su contraseña"></td>
+                       </tr>
+                       <tr>
+                            <td>Telefono:</td>
+                            <td><input id="txt-telefono" class="form-control" type="text" placeholder="Ingrese su número de teléfono" maxlength="8"></td>
+                        </tr>
+                        <tr>
+                            <td>Direccion:</td>
+                            <td><textarea id="txta-direccion" class="form-control" type="text" placeholder="Ingrese su dirección" cols="30" rows="1"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de Nacimiento:</td>
+                            <td><input id="txt-fecha-nacimiento" class="form-control" type="date"></td>
+                        </tr>
+                       <tr>
+                           <td>Genero:</td>
+                           <td>
+                                <select id="slc-genero" class="form-control">
+                                    <option value="0">Seleccione su género</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                            </td>
+                       </tr>
+                       <tr>
+                           <td colspan="2">
+                                <div class="btn-group " role="group" aria-label="Basic example">
+                                    <a class="btn btn-danger" href="index.html">Pagina Principal</a>
+                                    <a class="btn btn-info" href="login.html">Iniciar Sesión</a>
+                                    <button id="btn-crear" type="button" class="btn btn-success">Crear Cuenta</button>
+                                </div>
+                           </td>
+                       </tr>
+                   </table>
+                </div>
+
+                <div class="col-lg-2" id="error">
+                    <h5 class="texto-error">Todos los campos deben estar llenos</h5>
+                </div>
+
+                <div class="col-lg-2" id="creado">
+                    <h5 class="texto-creado">Usuario creado con éxito</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controlador-registrarse.js"></script>
     </body>
-</html>
+</html>|
