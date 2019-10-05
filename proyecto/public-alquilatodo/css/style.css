@@ -1,0 +1,102 @@
+#nav-principal {
+    background-color: #000000!important;
+}
+
+#proyectos{
+    background-color: white;
+    border-radius: 3px;
+}
+
+label{
+    height: 45px;
+    background-color: rgba(192, 193, 194, 0.719);
+    width: 146px;
+    padding-left: 20px;
+    margin-top: 15px;
+    border-radius: 20px;
+}
+
+#identificador-usuario{
+    color: white;
+    background-color: blue;
+}
+
+input[type="button"] {
+    margin-right: 10px;
+}
+
+#icono{
+    height: 20px;
+    margin-right: 10px;
+}
+
+#proyecto-info, #carpeta-info{
+    margin-bottom: 10px;
+}
+
+#error, #creado, #creado-proyecto{
+    height: 100px;
+    width: 150px;
+    border-radius: 3px;
+    margin-top: -92px;
+    position: absolute;
+    margin-left: 485px;
+    display:none;
+}
+
+#error{
+    background-color: red;
+}
+
+#creado, #creado-proyecto, #creada-carpeta{
+    background-color: rgb(13, 238, 126);
+}
+
+#texto-error, #texto-creado{
+    margin-top: 25px;
+    margin-left: 17px;
+}
+
+#carpetas{
+    background-color: rgba(175, 169, 169, 0.692);
+    border-radius: 3px;
+    display: none;
+}
+
+#archivos{
+    background-color: white;
+    border-radius: 3px;
+    display:none;
+}
+
+#modificada-carpeta, #eliminada-carpeta, #creado-carpeta{
+    height: 100px;
+    width: 150px;
+    border-radius: 3px;
+    margin-top: -260px;
+    position: absolute;
+    margin-left: 485px;
+    display: none;
+}
+
+#modificada-carpeta, #creado-carpeta, #agregar-archivo, #modificado-archivo{
+    background-color: rgb(13, 238, 126);
+}
+
+#eliminada-carpeta, #eliminado-archivo{
+    background-color: red;
+}
+
+#eliminado-archivo, #modificado-archivo{
+    height: 100px;
+    width: 150px;
+    border-radius: 3px;
+    margin-top: -95px;
+    position: absolute;
+    margin-left: 485px;
+    display: none;
+}
+
+.redireccion-editar{
+    margin-right: 12px;
+}

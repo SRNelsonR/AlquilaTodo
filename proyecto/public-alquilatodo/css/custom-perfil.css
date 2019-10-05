@@ -1,0 +1,9 @@
+#informacion{
+    background-color: rgb(160, 165, 175);
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+#btn-modificar-informacion{
+    margin-right: 10px;
+}

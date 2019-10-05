@@ -2,7 +2,6 @@ $(document).ready(function(){
     
 });
 
-
 //Función para crear nuevo usuario verificando que los campos esten llenos
 $("#btn-crear").click(function(){
     var date = new Date();
@@ -28,7 +27,6 @@ $("#btn-crear").click(function(){
             data:datos,
             dataType:"json",
             success:function(res){
-                console.log(res);
                 $("#creado").fadeIn().delay(3000).fadeOut();
                 window.setTimeout(function(){
                     window.location.href = "/login.html";

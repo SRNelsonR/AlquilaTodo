@@ -1,0 +1,20 @@
+#html, #css, #js{
+    background-color: rgb(199, 190, 190);
+    border-radius: 4px;
+}
+
+#resultado{
+    margin-top: 10px;
+}
+
+textarea{
+    border-radius: 5px;
+}
+
+#btn-guardar-edicion, #btn-ejecutar-edicion{
+    margin-right: 10px;
+}
+
+#btn-guardar-edicion, #btn-crear-edicion, #btn-ejecutar-edicion, #btn-crear-edicion{
+    display: none;
+}

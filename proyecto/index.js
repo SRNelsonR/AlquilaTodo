@@ -89,8 +89,8 @@ app.post("/actualizar-informacion-usuario", function(req, res){
     conexion.end();
 });
 
-// Actualizar las variables de sesion al actualizar un usuario
-app.post("/actualizar-variables-session", function(req, res){
+// Variables de sesion (Estaba como POST lo cambia a GET)
+app.post("/login", function(req, res){
     var conexion = mysql.createConnection(credenciales);
     conexion.query(
         "SELECT codigo_usuario, nombre, apellido, correo, telefono, direccion, estado_usuario, fecha_nacimiento FROM tbl_usuarios WHERE correo = ? and contrasena = sha1(?) and estado_usuario = 'Activo'",
@@ -121,16 +121,48 @@ app.post("/actualizar-variables-session", function(req, res){
     conexion.end();
 });
 
-// Variables de sesion (Estaba como POST lo cambia a GET)
-app.post("/login", function(req, res){
+/*----------------------Peticiones para perfil.html-----------------------------------------------------*/
+app.get("/informacion-usuario",function(req,res){
     var conexion = mysql.createConnection(credenciales);
-    console.log("Params: ", req.params);
-    console.log("Body: ", req.body);
     conexion.query(
-        "SELECT codigo_usuario, nombre, apellido, correo, telefono, direccion, estado_usuario, fecha_nacimiento FROM tbl_usuarios WHERE correo = ? and contrasena = sha1(?) and estado_usuario = 'Activo'",
+        "SELECT codigo_usuario, genero, nombre, apellido, correo, contrasena, telefono, direccion, estado_usuario, fecha_nacimiento, fecha_creacion, fecha_modificacion FROM tbl_usuarios WHERE codigo_usuario = ?",
         [
-            req.body.correo,
-            req.body.contrasena
+            req.query.codigo_usuario
+        ],
+        function(error, data, fields){
+            res.send(data);
+            res.end();
+        }    
+    );
+    conexion.end();
+});
+
+app.post("/actualizar-usuario", function(req, res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "UPDATE tbl_usuarios SET nombre = ?, apellido = ?, telefono = ?, direccion = ?, fecha_modificacion = ? WHERE codigo_usuario = ?",
+        [
+            req.body.nombre,
+            req.body.apellido,
+            req.body.telefono,
+            req.body.direccion,
+            req.body.fecha_modificacion,
+            req.body.codigo_usuario
+        ],
+        function(error, data, fields){
+            res.send(data);
+        }
+    );
+    conexion.end();
+});
+
+// Actualizar las variables de sesion al actualizar un usuario
+app.post("/actualizar-variables-session", function(req, res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "SELECT codigo_usuario, nombre, apellido, correo, telefono, direccion, estado_usuario, fecha_nacimiento FROM tbl_usuarios WHERE correo = ? and estado_usuario = 'Activo'",
+        [
+            req.body.correo
         ],
         function(error, data, fields){
             if (error){
@@ -174,7 +206,7 @@ app.get("/obtener-session",function(req,res){
 // Cerrar Sesion
 app.get("/cerrar-session",function(req,res){
     req.session.destroy();
-    res.send("Sesion eliminada");
+    res.send("Sesion eliminada con éxito");
     res.end();
 });
 
