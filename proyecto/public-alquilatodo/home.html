@@ -2,9 +2,91 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Otra</title>
+        <title>Alquitodo</title>
+        <link rel="icon" href="img/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/css-boot/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>Este es le lugar para buscar tu producto</h1>
+        <!-- Barra de navegación -->
+		<nav id="nav-principal" class="navbar navbar-dark bg-primary navbar-expand-lg">
+            <a class="navbar-brand" href="#">Alquitodo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+                <li class="nav-item dropdown">
+                    
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <input id="codigo-usuario" type="hidden">
+                    <button class="btn btn-secondary" id="btn-publicar-producto" data-toggle="modal" data-target="#publicar-producto" >Publicar Poducto</button>
+                    <a class="btn btn-dark redireccion-editar" href="perfil.html">Perfil</a>
+                    <button class="btn btn-danger" id="cerrar-sesion">Salir</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Cuerpo -->
+		<div class="container-fluid">
+            <div class="row">
+                <div id="" class="col-lg-2" >
+                    
+                </div>
+                <div id="contenedor" class="col-lg-8 bg-light">
+                    <div id="contenedor-publicaciones" class="row">
+                        
+                    </div>
+                </div>
+                <div id="" class="col-lg-2">
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Publicar un producto -->
+        <div class="modal fade" id="publicar-producto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2>Nombre del Producto: </h2> <input id="nombre-producto-modal" type="text" placeholder="Nombre" class="form-control">
+                    <h2>Descripcion: </h2> <input id="descripcion-producto-modal" type="text" placeholder="Descripcion" class="form-control">
+                    <h2>Precio: </h2> <input id="precio-producto-modal" type="number" placeholder="Precio" class="form-control">
+                    <h2>Estado: </h2> <input id="estado-producto-modal" type="number" placeholder="Estado del Producto" class="form-control">
+                    <h2>Unidades: </h2> <input id="unidades-modal" type="number" placeholder="Cantidad de Unidades" class="form-control">
+                    <h2>Seleccione una imagen: </h2>
+                    <select id="slc-imagenes" class="form-control">
+                        <option value="0">Seleccione una imagen</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    <button id="btn-publicar-datos" type="button" class="btn btn-success">Publicar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controlador-home.js"></script>
     </body>
 </html>

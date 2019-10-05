@@ -203,6 +203,94 @@ app.get("/obtener-session",function(req,res){
     res.end();
 });
 
+// Cargar las imagenes en el select al crear un producto
+app.get("/cargar-imagen",function(req,res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "SELECT url FROM tbl_fotos WHERE codigo_foto<=6;",
+        [],
+        function(error, data, fields){
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
+                
+                res.send(data);
+                res.end();
+            }
+        }    
+    );
+    conexion.end();
+});
+
+app.post("/crear-publicacion-producto",function(req,res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "INSERT INTO tbl_productos (codigo_usuario_propietario, nombre_producto, descripcion, precio_producto, estado_producto, unidades, cantidad_disponible, fecha_publicacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+            req.body.codigo_usuario_propietario,
+            req.body.nombre_producto,
+            req.body.descripcion,
+            req.body.precio_producto,
+            req.body.estado_producto,
+            req.body.unidades,
+            req.body.cantidad_disponible,
+            req.body.fecha_publicacion
+        ],
+        function(error, data, fields){
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
+                res.send(data);
+                res.end();
+            }
+        }    
+    );
+    conexion.end();
+});
+
+app.post("/crear-foto",function(req,res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "INSERT INTO tbl_fotos (codigo_producto, url, fecha_creacion) VALUES (?, ?, ?)",
+        [
+            req.body.codigo_producto,
+            req.body.url,
+            req.body.fecha_creacion
+        ],
+        function(error, data, fields){
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
+                res.send(data);
+                res.end();
+            }
+        }    
+    );
+    conexion.end();
+});
+
+app.get("/cargar-publicaciones",function(req,res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "SELECT a.codigo_producto, a.codigo_usuario_propietario, a.nombre_producto, a.descripcion, a.precio_producto, a.estado_producto, a.unidades, a.cantidad_disponible, a.fecha_publicacion, b.codigo_foto, b.url from tbl_productos a INNER JOIN tbl_fotos b on(a.codigo_producto = b.codigo_producto) WHERE b.codigo_foto > 6",
+        [],
+        function(error, data, fields){
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
+                
+                res.send(data);
+                res.end();
+            }
+        }    
+    );
+    conexion.end();
+});
+
 // Cerrar Sesion
 app.get("/cerrar-session",function(req,res){
     req.session.destroy();
