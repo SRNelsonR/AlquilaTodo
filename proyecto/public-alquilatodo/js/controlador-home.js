@@ -105,6 +105,7 @@ function cargarPublicaciones(){
             res.forEach(function(element) {
                 $("#contenedor-publicaciones").append(
                 `<div class="card" style="width: 18rem; height: 20rem;">
+                    <input id="codigo-usuario-propietario" type="hidden" value="${element.codigo_usuario_propietario}">
                     <img src="${element.url}" class="card-img-top" alt="La imagen no existe">
                     <div class="card-body">
                         <h5 class="card-title">Producto: ${element.nombre_producto}</h5>
@@ -117,7 +118,7 @@ function cargarPublicaciones(){
                         <li class="list-group-item">Fecha de Publicación: ${corregirFecha(element.fecha_publicacion)}</li>
                     </ul>
                     <div class="card-body">
-                        <button class="btn btn-secondary" id="btn-detalles-producto" data-toggle="modal" data-target="#detalles-producto">Detalles</button>
+                        <button class="btn btn-secondary" id="btn-detalles-producto" onclick="cargarInfoProducto(${element.codigo_producto});" data-toggle="modal" data-target="#detalles-producto">Detalles</button>
                     </div>
                 </div>`
                 );
@@ -148,3 +149,36 @@ $("#cerrar-sesion").click(function(){
         }
     });
 });
+
+function cargarInfoProducto(codigo_producto){
+    var datosUsuario = `codigo_usuario=` + $("#codigo-usuario-propietario").val();
+    $.ajax({
+        url:"/informacion-usuario",
+        method:"GET",
+        data:datosUsuario,
+        dataType:"json",
+        success:function(res){
+            $("#span-nombre").html(res[0].nombre + " " + res[0].apellido);
+            $("#span-correo").html(res[0].correo);
+            $("#span-telefono").html(res[0].telefono);
+        },
+        error:function(error){
+            console.error(error);
+        }
+    });
+
+    var datos = "codigo_producto=" + codigo_producto;
+    $.ajax({
+        url:"/publicacion-especifica",
+        method:"GET",
+        data:datos,
+        dataType:"json",
+        success:function(res){
+            $("#span-nombre-producto").html(res[0].nombre_producto);
+            $("#span-precio").html(res[0].precio_producto);
+        },
+        error:function(error){
+            console.error(error);
+        }
+    });
+}

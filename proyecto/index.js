@@ -291,6 +291,26 @@ app.get("/cargar-publicaciones",function(req,res){
     conexion.end();
 });
 
+app.get("/publicacion-especifica",function(req,res){
+    var conexion = mysql.createConnection(credenciales);
+    conexion.query(
+        "SELECT nombre_producto, precio_producto FROM tbl_productos WHERE codigo_producto = ?",
+        [
+            req.query.codigo_producto
+        ],
+        function(error, data, fields){
+            if (error){
+                res.send(error);
+                res.end();
+            }else{
+                res.send(data);
+                res.end();
+            }
+        }    
+    );
+    conexion.end();
+});
+
 // Cerrar Sesion
 app.get("/cerrar-session",function(req,res){
     req.session.destroy();
