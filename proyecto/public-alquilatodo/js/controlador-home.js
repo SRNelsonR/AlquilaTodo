@@ -117,7 +117,7 @@ function cargarPublicaciones(){
                         <li class="list-group-item">Fecha de Publicación: ${corregirFecha(element.fecha_publicacion)}</li>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="card-link">Detalles</a>
+                        <button class="btn btn-secondary" id="btn-detalles-producto" data-toggle="modal" data-target="#detalles-producto">Detalles</button>
                     </div>
                 </div>`
                 );
