@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Alquitodo</title>
+        <link rel="icon" href="img/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/css-boot/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/custom-edicion.css">
+        <link rel="stylesheet" href="css/custom-perfil.css">
+    </head>
+    <body>
+        <!-- Barra de navegación -->
+		<nav id="nav-principal" class="navbar navbar-dark bg-primary navbar-expand-lg">
+            <a class="navbar-brand" href="#">Alquitodo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+                <li class="nav-item dropdown">
+                    
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <input id="codigo-usuario" type="hidden">
+                    <button class="btn btn-secondary" id="btn-modificar-informacion" data-toggle="modal" data-target="#modificar-informacion" >Modificar Información</button>
+                    <a class="btn btn-dark redireccion-editar" href="home.html">Publicaciones</a>
+                    <button class="btn btn-danger" id="cerrar-sesion">Salir</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row justify-content-md-center">
+                <div id="informacion" class="col-lg-6 justify-content-md-center">
+                    
+                    <div id="info-titulo">
+                        <h3>Infomración del Usuario</h3>
+                    </div>
+                    
+                    <div id="info-contenido">
+                        <label><h3>Nombre: </h3></label> <label><div id="nombre-usuario"></div></label> <br>
+                        <label> <h3>Apellido: </h3></label> <label><div id="apellido-usuario"></div></label> <br>
+                        <label> <h3>Correo: </h3></label> <label><div id="correo"></div></label> <br>
+                        <label> <h3>Teléfono: </h3></label> <label><div id="telefono"></div></label> <br>
+                        <label> <h3>Dirección: </h3></label> <label><div id="direccion"></div></label> <br>
+                        <label> <h3>Fecha de Nacimiento: </h3></label> <label><div id="fecha-nacimiento"></div></label> <br>
+                        <label> <h3>Fecha de Creación: </h3></label> <label><div id="fecha-creacion"></div></label> <br>
+                        <label> <h3>Genero: </h3></label> <label><div id="genero"></div></label> <br>
+                    </div>
+
+                    <div class="col-lg-2" id="error">
+                        <h5 class="texto-error">Todos los campos deben estar llenos</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Gestionar Carpetas -->
+        <div class="modal fade" id="modificar-informacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modificar Información del Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2>Nombre: </h2> <input id="nombre-modal" type="text" placeholder="Nombre" class="form-control">
+                    <h2>Apellido: </h2> <input id="apellido-modal" type="text" placeholder="Apellido" class="form-control">
+                    <h2>Telefono: </h2> <input id="telefono-modal" type="text" placeholder="Telefono" class="form-control">
+                    <h2>Direccion: </h2> <input id="direccion-modal" type="text" placeholder="Direccion" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    <button id="btn-modificar-datos" type="button" class="btn btn-success">Modificar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controlador-perfil.js"></script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Alquitodo</title>
+        <link rel="icon" href="img/logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="css/css-boot/bootstrap.min.css">
+        <link rel="stylesheet" href="css/css-boot/custom.css">      
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div id="formulario-login" class="col-4" style="margin-left: auto; margin-right: auto;">
+                    <form class="form-signin">
+                        <img class="mb-4 img-fluid" src="img/logo.png" alt="Imagen no Encontrada" width="300" height="67">
+                        <h1 class="h3 mb-3 font-weight-normal">Ingresar Información</h1>
+                        <label for="inputEmail" class="sr-only">Correo</label>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required autofocus value="oscar@gmail.com">
+                        <label for="inputPassword" class="sr-only">Contraseña</label>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required value="asd.123">
+                        <div class="checkbox mb-3">
+                            <label>
+                               <input type="checkbox" value="remember-me"> Recuerdame
+                            </label>
+                        </div>
+                        <button id="btn-ingresar" class="btn btn-lg btn-success btn-block">Ingresar</button>
+                        <a class="btn btn-info" href="index.html">Pagina Principal</a>
+                        <a class="btn btn-secondary" href="registrarse.html">Registrarse</a>
+                        <p class="mt-5 mb-3 text-muted">&copy; Alquitodo</p>         
+                    </form>
+                </div>
+
+                <div class="col-lg-2" id="error-login">
+                    <h5 class="texto-error">Todos los campos deben estar llenos</h5>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/controlador-login.js"></script>
+    </body>
+</html>
